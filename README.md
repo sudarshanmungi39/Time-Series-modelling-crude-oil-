@@ -1,51 +1,86 @@
-# Oil Price Time Series Forecasting
+#  Oil Price Time Series Forecasting
 
-A time series analysis of daily oil prices using ARIMA and LSTM models. The project includes forecasting 24 months into the future and comparing predictions to real Brent prices.
+A time series analysis of daily oil prices using **ARIMA** and **LSTM** models. This project forecasts oil prices 24 months ahead and compares them with real Brent crude prices for validation.
 
-## Table of Contents
-- [Overview](#overview)
-- [Data Source](#data-source)
-- [Methods Used](#methods-used)
-- [Results](#results)
-- [Comparison](#comparison)
-- [Future Improvements](#future-improvements)
+---
 
-## Overview
+##  Table of Contents
+- Overview  
+- Data Source  
+- Methods Used  
+- Results  
+- Comparison  
+- Future Improvements  
+- License  
+
+---
+
+##  Overview
+
 This project models oil price trends using:
-- ARIMA: for traditional linear modeling
-- LSTM: for capturing complex temporal patterns
 
-## Data Source
-- Assignment dataset: `oil_prices.csv` (July 2020 – Dec 2022)[EIA.gov](https://www.eia.gov/)
-- Real Brent Prices: Scraped from [Investing.com](https://www.investing.com/) 
+- **ARIMA**: for traditional, interpretable linear modeling  
+- **LSTM**: to capture non-linear and dynamic patterns in the data  
 
-## Methods Used
-- ARIMA(p, d, q) parameter tuning with AIC
-- LSTM neural network with early stopping
-- RMSE and MAE used for evaluation
+The goal is to evaluate each model’s forecasting capability and compare predictions against actual Brent prices from Jan 2023 to Jun 2025.
 
-## Results
-### ARIMA:
-- Best model: ARIMA(6,1,7)
-- RMSE: 2.87 (historical), ~9.11 (real Brent)
+---
 
-### LSTM:
-- RMSE: 3.62 (test), ~7.88 (real Brent)
-- MAE: 2.91 (test), ~6.46 (real Brent)
+##  Data Source
 
-## Comparison
-| Metric      | ARIMA     | LSTM      |
-| ----------- | --------- | --------- |
-| RMSE        | 2.87      | 3.62      |
-| MAE         | 2.15      | 2.91      |
-| Brent RMSE  | ~9.11     | ~7.88     |
-| Brent MAE   | ~7.82     | ~6.46     |
+- `oil_price.csv`: Daily oil prices from **July 2020 – Dec 2022** (provided in assignment)
+- Real Brent prices: Retrieved from  
+  [EIA.gov](https://www.eia.gov/dnav/pet/pet_pri_spt_s1_d.htm) and Investing.com
 
+---
 
-## Future Improvements
-- Try hybrid ARIMA-LSTM models
-- Use exogenous features (e.g., inflation, war index)
-- Apply transformer-based forecasting models
+##  Methods Used
 
-## License
-This project is licensed under the MIT License.
+- **ARIMA (6,1,7)** selected using AIC grid search  
+- **LSTM**: 2-layer neural network with early stopping, dropout, and 60-day sequence window  
+- Forecast length: **730 days (24 months)**  
+- Evaluation metrics: **RMSE** and **MAE**  
+
+---
+
+##  Results
+
+### ARIMA  
+- Best model: **ARIMA(6,1,7)**  
+- RMSE (test): **2.25**  
+- MAE (test): **1.72**  
+- RMSE (Brent): **2.25**  
+- MAE (Brent): **1.72**  
+
+### LSTM  
+- RMSE (test): **2.53**  
+- MAE (test): **1.98**  
+- RMSE (Brent): **13.50**  
+- MAE (Brent): **10.67**
+
+---
+
+##  Comparison
+
+| Metric        | ARIMA | LSTM (Test) | LSTM (Forecast) |
+|---------------|--------|-------------|-----------------|
+| RMSE (test)   | 2.25   | 2.53        | –               |
+| MAE (test)    | 1.72   | 1.98        | –               |
+| RMSE (Brent)  | 2.25   | –           | 13.50           |
+| MAE (Brent)   | 1.72   | –           | 10.67           |
+
+---
+
+##  Future Improvements
+
+- Try **hybrid ARIMA-LSTM** models  
+- Use **exogenous features** (e.g., inflation, geopolitical events)  
+- Explore **transformer-based** or attention-based time series models  
+- Apply **rolling retraining** for long-term LSTM forecasting  
+
+---
+
+##  License
+
+This project is licensed under the **MIT License**.
+
