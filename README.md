@@ -45,29 +45,28 @@ The goal is to evaluate each model’s forecasting capability and compare predic
 
 ##  Results
 
-### ARIMA  
+###  ARIMA  
 - Best model: **ARIMA(6,1,7)**  
-- RMSE (test): **2.25**  
-- MAE (test): **1.72**  
-- RMSE (Brent): **2.25**  
-- MAE (Brent): **1.72**  
+- RMSE (test split): **26.12**  
+- MAE (test split): **24.09**  
+- RMSE (Brent real-world): **5.70**  
+- MAE (Brent real-world): **4.69**  
 
-### LSTM  
-- RMSE (test): **2.53**  
-- MAE (test): **1.98**  
-- RMSE (Brent): **13.50**  
-- MAE (Brent): **10.67**
+###  LSTM  
+- RMSE (direct test): **2.53**  
+- MAE (direct test): **1.98**  
+- RMSE (forecast vs Brent): **13.50**  
+- MAE (forecast vs Brent): **10.67**
 
 ---
 
-##  Comparison
+##  Model Performance Comparison
 
-| Metric        | ARIMA | LSTM (Test) | LSTM (Forecast) |
-|---------------|--------|-------------|-----------------|
-| RMSE (test)   | 2.25   | 2.53        | –               |
-| MAE (test)    | 1.72   | 1.98        | –               |
-| RMSE (Brent)  | 2.25   | –           | 13.50           |
-| MAE (Brent)   | 1.72   | –           | 10.67           |
+| Metric            | ARIMA (Test) | ARIMA (Brent) | LSTM (Test) | LSTM (Forecast) |
+|-------------------|---------------|----------------|--------------|------------------|
+| **RMSE**          | 26.12         | 5.70           | 2.53         | 13.50            |
+| **MAE**           | 24.09         | 4.69           | 1.98         | 10.67            |
+
 
 ---
 
